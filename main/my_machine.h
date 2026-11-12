@@ -34,7 +34,7 @@
 //#define BOARD_FYSETC_E4               			//
 //#define BOARD_JACKPOT                 			// Uses TMC2209 drivers, untested!
 //#define BOARD_MKS_DLC32_MAX_V1        			// Has a ESP32-S3 MCU
-//#define BOARD_MKS_DLC32_V2P0          			//
+#define BOARD_MKS_DLC32_V2P0            			//
 //#define BOARD_MKS_TINYBEE_V1          			//
 //#define BOARD_OOZNEST_CNC                         // Has a ESP32-S3 MCU
 //#define BOARD_PIBOT_I2S_6_AXIS        			// PiBot 6-axis I2S board
