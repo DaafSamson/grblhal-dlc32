@@ -311,3 +311,14 @@ unset(AddMyPlugin CACHE)
 target_compile_options("${COMPONENT_LIB}" PRIVATE -Wimplicit-fallthrough=1 -Wno-missing-field-initializers -Wno-maybe-uninitialized -Wno-stringop-truncation -Wno-expansion-to-defined)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Extra core (grbl/) compile definitions. Core options such as ENABLE_BACKLASH_COMPENSATION are read
+# from grbl/config.h, not from my_machine.h (which only the driver includes), so they must be compiler
+# defines. Default for this branch: backlash compensation on ($160-$162).
+# Override with: idf.py -D GRBL_EXTRA_DEFS="NAME=VALUE;NAME2=VALUE2" build  (an empty string disables)
+if(NOT DEFINED GRBL_EXTRA_DEFS)
+    set(GRBL_EXTRA_DEFS "ENABLE_BACKLASH_COMPENSATION=1")
+endif()
+if(GRBL_EXTRA_DEFS)
+    target_compile_definitions("${COMPONENT_LIB}" PUBLIC ${GRBL_EXTRA_DEFS})
+endif()
